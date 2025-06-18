@@ -1,0 +1,22 @@
+{
+  "name": "hdevplus/connector-php",
+  "description": "H:Dev+ PHP connector",
+  "type": "hdevplus-connector",
+  "autoload": {
+    "psr-4": {
+      "hdevplus\\": "src/"
+    }
+  },
+  "require": {
+    "php": ">=7.4",
+    "ext-curl": "*",
+    "ext-json": "*"
+  },
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "Ziman",
+      "email": "ziman.han@hanbnc.com"
+    }
+  ]
+}
