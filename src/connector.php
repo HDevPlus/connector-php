@@ -4,7 +4,7 @@ class connector
 {
     private $resCURL;
     private $arrHeader = [];
-    private $arrRequestData = [];
+    public $arrRequestData = [];
     private $strApiUrl;
     private $strSecureKey;
     public $result;
@@ -26,7 +26,7 @@ class connector
         if(!$arrRequestData['api_token']) {
             $arrRequestData['secure_key'] = $this->strSecureKey;
         }
-        $this->arrRequestData = array_merge($arrRequestData, $_REQUEST ? $_REQUEST : array());
+        $this->arrRequestData = array_merge($arrRequestData, $_REQUEST ? : array());
 
         curl_setopt($this->resCURL, CURLOPT_HEADER, false);
         curl_setopt($this->resCURL, CURLOPT_HTTPHEADER, $this->arrHeader);
@@ -72,7 +72,7 @@ class connector
     }
     public function loadScript(){
         $arrResult = json_decode($this->result, true);
-        foreach(is_array($arrResult['env']['js'])?$arrResult['env']['js']:[] as $intKey=>$strScript){
+        foreach(is_array($arrResult['env']['js'])?$arrResult['env']['js']:[] as $strScript){
             echo '<script src="'.$strScript.'"></script>';
         }
     }
