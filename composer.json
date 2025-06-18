@@ -18,5 +18,9 @@
       "name": "Ziman",
       "email": "ziman.han@hanbnc.com"
     }
-  ]
+  ],
+  "keywords": ["hdevplus", "connector", "api", "backend"],
+  "support": {
+    "issues": "https://github.com/HDevPlus/connector-php/issues"
+  }
 }
