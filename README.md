@@ -21,14 +21,16 @@ use HDevPlus\Connector;
 $apiUrl = 'https://api.hdevplus.com'; // Replace with your actual API URL
 $secureKey = 'your-secure-key';       // Replace with your actual secure key
 
+// Step 1 – Specify the data identifier to request
 $requestData = [
     'dataID' => 'GET_POST_LIST'
 ];
 
+// Step 2 – Invoke the connector with the request data
 $connector = new Connector($apiUrl, $secureKey);
 $response = $connector->request($requestData);
 
-// Handle response
+// Step 3 – Process and utilize the response data
 print_r($response);
 ```
 
