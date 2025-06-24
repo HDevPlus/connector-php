@@ -44,22 +44,25 @@ class connector
         }
 
         curl_close($this->resCURL);
-        error_log(var_export($arrResponse,true));
-        error_log($strResult);
         if (is_array($arrResponse) && $arrResponse['http_code'] == 200) {
             $arrReturn = json_decode($strResult, true);
-            if($arrReturn['redirect_url']){
-                header('location:'.$arrReturn['redirect_url']);
+            if ($arrReturn['redirect_url']) {
+                header('location:' . $arrReturn['redirect_url']);
                 exit;
             }
+            if($arrReturn['error'] === true) {
+                $intExpires = time() + (60 * 60 * 24);
+            }else{
+                $intExpires = time() - 3600;
+            }
             setcookie("session_id", $arrReturn['session']['id'], [
-                'expires' => time() + (60 * 60 * 24 * 365),
+                'expires' => $intExpires,
                 'path' => '/',
                 'secure' => true,
                 'samesite' => 'None'
             ]);
             setcookie("api_token", $arrReturn['session']['api_token'], [
-                'expires' => time() + (60 * 60 * 24 * 365),
+                'expires' => $intExpires,
                 'path' => '/',
                 'secure' => true,
                 'samesite' => 'None'
